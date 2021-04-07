@@ -12,6 +12,8 @@ const Content = ({field, language}) => {
     );
 };
 
-Content.defaultProps = {}
-
+Content.propTypes = {
+    field : PropTypes.object,
+    language : PropTypes.number
+}
 export default Content;

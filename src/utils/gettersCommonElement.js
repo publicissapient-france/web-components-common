@@ -1,7 +1,7 @@
 import React from 'react';
 import {getResponsiveKey} from "./functions";
 import {ImageContainerCommon} from '../styles/common.styled'
-import { extractWithoutExtension, getExtensionFileName} from "./functions";
+import { extractFileNameWithoutExtension, getExtensionFileName} from "./functions";
 
 const getImages = (field, language) => {
     const responsiveContent = getResponsiveKey(field.content.images[0].asset)[0];
@@ -24,7 +24,7 @@ const getImages = (field, language) => {
 
 const generatePictureWebP = (src, alt) => {
     const extension = getExtensionFileName(src);
-    const srcWithoutExtension = extractWithoutExtension(src);
+    const srcWithoutExtension = extractFileNameWithoutExtension(src);
 
     if (typeof window !== 'undefined' && typeof document !== `undefined`) {
         if(document.documentElement.classList.contains('no-webp')){

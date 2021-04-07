@@ -28,6 +28,7 @@ const ImageClickable = ({field, language, assetsDirectory, className, Link}) => 
                                   onClick={(e) => {
                                       if (!Link || (Link && !Link.content.link[language]) || (Link && Link.settings.state.disabled)) e.preventDefault();
                                   }}
+                                  data-testid="cta"
             >
                 { generatePictureWebP(`${assetsDirectory || ''}${ file }`,alt )}
             </ImageContainerCommon>
@@ -36,6 +37,12 @@ const ImageClickable = ({field, language, assetsDirectory, className, Link}) => 
 
 };
 
-ImageClickable.defaultProps = {}
+ImageClickable.defaultProps = {
+    field: PropTypes.object,
+    language: PropTypes.number,
+    assetsDirectory: PropTypes.string,
+    className: PropTypes.string,
+    Link: PropTypes.object
+};
 
 export default ImageClickable;

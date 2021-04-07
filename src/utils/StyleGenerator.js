@@ -1,5 +1,5 @@
 import {getExtensionFileName, isHexadecimal, isNumber} from "./functions";
-import {extractWithoutExtension} from "./functions";
+import {extractFileNameWithoutExtension} from "./functions";
 import {hexToRgb, RGBAtoString} from "./functions";
 
 const generatePadding = (prop, size, subProp) => {
@@ -85,37 +85,37 @@ const generateSize = (prop, size, subProp) => {
         return `
             ${prop[size].size && prop[size].size[subProp].width && prop[size].size[subProp].width !== '' ?
             `width :${ isNumber(prop[size].size[subProp].width)
-                ? `${ prop[size].size[subProp].width }px;`
+                ? `${ prop[size].size[subProp].width }px`
                 : prop[size].size[subProp].width };`
             : ''}
             
             ${ prop[size].size && prop[size].size[subProp].height && prop[size].size[subProp].height !== '' ?
             `height :${ isNumber(prop[size].size[subProp].height)
-                ? `${ prop[size].size[subProp].height }px;`
+                ? `${ prop[size].size[subProp].height }px`
                 : prop[size].size[subProp].height };`
             : ''}
                 
             ${ prop[size].size && prop[size].size[subProp].maxWidth && prop[size].size[subProp].maxWidth !== '' ?
             `max-width :${ isNumber(prop[size].size[subProp].maxWidth)
-                ? `${ prop[size].size[subProp].maxWidth }px;`
+                ? `${ prop[size].size[subProp].maxWidth }px`
                 : prop[size].size[subProp].maxWidth };`
             : ''}
                 
             ${ prop[size].size && prop[size].size[subProp].maxHeight && prop[size].size[subProp].maxHeight !== '' ?
             `max-height :${ isNumber(prop[size].size[subProp].maxHeight)
-                ? `${ prop[size].size[subProp].maxHeight }px;`
+                ? `${ prop[size].size[subProp].maxHeight }px`
                 : prop[size].size[subProp].maxHeight };`
             : ''}
                 
             ${ prop[size].size && prop[size].size[subProp].minWidth && prop[size].size[subProp].minWidth !== '' ?
             `min-width :${ isNumber(prop[size].size[subProp].minWidth)
-                ? `${ prop[size].size[subProp].minWidth }px;`
+                ? `${ prop[size].size[subProp].minWidth }px`
                 : prop[size].size[subProp].minWidth };`
             : ''}
                 
             ${ prop[size].size && prop[size].size[subProp].minHeight && prop[size].size[subProp].minHeight !== '' ?
             `min-height :${ isNumber(prop[size].size[subProp].minHeight)
-                ? `${ prop[size].size[subProp].minHeight }px;`
+                ? `${ prop[size].size[subProp].minHeight }px`
                 : prop[size].size[subProp].minHeight };`
             : ''}
             `
@@ -123,37 +123,37 @@ const generateSize = (prop, size, subProp) => {
     return `
     ${prop[size].size && prop[size].size.width && prop[size].size.width !== '' ?
         `width :${ isNumber(prop[size].size.width)
-            ? `${ prop[size].size.width }px;`
+            ? `${ prop[size].size.width }px`
             : prop[size].size.width };`
         : ''}
     
     ${ prop[size].size && prop[size].size.height && prop[size].size.height !== '' ?
         `height :${ isNumber(prop[size].size.height)
-            ? `${ prop[size].size.height }px;`
+            ? `${ prop[size].size.height }px`
             : prop[size].size.height };`
         : ''}
         
     ${ prop[size].size && prop[size].size.maxWidth && prop[size].size.maxWidth !== '' ?
         `max-width :${ isNumber(prop[size].size.maxWidth)
-            ? `${ prop[size].size.maxWidth }px;`
+            ? `${ prop[size].size.maxWidth }px`
             : prop[size].size.maxWidth };`
         : ''}
         
     ${ prop[size].size && prop[size].size.maxHeight && prop[size].size.maxHeight !== '' ?
         `max-height :${ isNumber(prop[size].size.maxHeight)
-            ? `${ prop[size].size.maxHeight }px;`
+            ? `${ prop[size].size.maxHeight }px`
             : prop[size].size.maxHeight };`
         : ''}
         
     ${ prop[size].size && prop[size].size.minWidth && prop[size].size.minWidth !== '' ?
         `min-width :${ isNumber(prop[size].size.minWidth)
-            ? `${ prop[size].size.minWidth }px;`
+            ? `${ prop[size].size.minWidth }px`
             : prop[size].size.minWidth };`
         : ''}
         
     ${ prop[size].size && prop[size].size.minHeight && prop[size].size.minHeight !== '' ?
         `min-height :${ isNumber(prop[size].size.minHeight)
-            ? `${ prop[size].size.minHeight }px;`
+            ? `${ prop[size].size.minHeight }px`
             : prop[size].size.minHeight };`
         : ''}
     `
@@ -415,11 +415,12 @@ const getFormatedSizeProperty = (property, value) => {
     return `
         ${value[camelProperty] && value[camelProperty] !== '' ?
         `${property} :${ isNumber(value[camelProperty])
-            ? `${ value[camelProperty] }px;`
+            ? `${ value[camelProperty] }px`
             : value[camelProperty] };`
         : ''}
     `
 }
+
 
 const toCamel = (s) => {
     return s.replace(/([-_][a-z])/ig, ($1) => {
@@ -457,7 +458,7 @@ const generateBackgroundImageWebp = (prop, size, assetsDirectory) => {
     const extension = getExtensionFileName(path);
 
     if (extension === 'png' || extension === 'jpeg' || extension === 'jpg') {
-        const pathWebp = `${  extractWithoutExtension(path) }.webp`;
+        const pathWebp = `${  extractFileNameWithoutExtension(path) }.webp`;
 
         return `
             background-image : url('${ pathWebp }');
@@ -480,7 +481,7 @@ const generateBackgroundImageWebpNoResponsive = (fileName, assetsDirectory) => {
     const extension = getExtensionFileName(path);
 
     if (extension === 'png' || extension === 'jpeg' || extension === 'jpg') {
-        const pathWebp = `${  extractWithoutExtension(path) }.webp`;
+        const pathWebp = `${  extractFileNameWithoutExtension(path) }.webp`;
 
         return `
             background-image : url('${ pathWebp }');
@@ -510,5 +511,5 @@ export {
     generateBorderColor,
     getFormatedSizeProperty,
     generateBackgroundImageWebp,
-    generateBackgroundImageWebpNoResponsive, generateBackgroundImageNoResponsive
+    generateBackgroundImageWebpNoResponsive, generateBackgroundImageNoResponsive, toCamel
 }

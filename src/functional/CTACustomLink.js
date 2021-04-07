@@ -19,14 +19,21 @@ const CTACustomLink = ({field, language, link, animateUnderline}) => {
                    onClick={(e) => {
                        if (field.settings.state && field.settings.state.disabled) e.preventDefault();
                    }}
+                   data-testid="cta"
 
         >
-            {icon ? <i>{icon}</i> : null}
+            {icon ? <i data-testid="cta-icon">{icon}</i> : null}
             {content ? <p>{content}</p> : null}
         </CTACommon>
     );
 };
 
-CTACustomLink.defaultProps = {}
+
+CTACustomLink.propTypes = {
+    field: PropTypes.object,
+    language: PropTypes.number,
+    link: PropTypes.string,
+    animateUnderline: PropTypes.bool
+};
 
 export default CTACustomLink;

@@ -53,7 +53,7 @@ const getExtensionFileName = (fileName) => {
     return fileName.substr(fileName.lastIndexOf('.') + 1);
 }
 
-const extractWithoutExtension = (fileName) => {
+const extractFileNameWithoutExtension = (fileName) => {
     return fileName.split('.').slice(0, -1).join('.')
 }
 const isOdd = (num) => {
@@ -68,5 +68,5 @@ export {
     isResponsiveProps,
     getResponsiveKey,
     isNumber, isOdd,
-    removeSpaces, fileNameFromUrl, naiveCopy, getExtensionFileName, extractWithoutExtension
+    removeSpaces, fileNameFromUrl, naiveCopy, getExtensionFileName, extractFileNameWithoutExtension
 };

@@ -1,73 +1,115 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import BlockText from './BlockText';
-import {Template, TextMock, ContentMock} from "../../../stories/mock";
-import Text from '../../functional/Text';
-import Content from '../../functional/Content';
+import {settingsTemplate, settingsText, settingsTitle} from "../../test/mock/fields-data/organism.model.config";
+import {render, screen} from '@testing-library/react'
+
+
+const TemplateMock = {
+    content: {},
+    responsiveSettings: ['A'],
+    settings: settingsTemplate
+};
+const TitleMock = {
+    content: {
+        text: {
+            0: 'Titre',
+            1: 'Title'
+        }
+    },
+    responsiveSettings: ['M', 'T', 'D'],
+    settings: settingsTitle
+};
+
+const TaglineMock = {
+    content: {
+        text: {
+            0: 'Tagline',
+            1: 'Tagline'
+        }
+    },
+    responsiveSettings: ['M', 'T', 'D'],
+    settings: settingsTitle
+};
+
+const TextMock = {
+    content: {
+        text: {
+            0: 'Un text',
+            1: 'Some text'
+        }
+    },
+    responsiveSettings: ['M', 'T', 'D'],
+    settings: settingsTitle
+};
+const ContentMock = {
+    content: {
+        html: {
+            0: '<p>Contenu</p',
+            1: '<p>Inner</p>'
+        }
+    },
+    responsiveSettings: ['A'],
+    settings: settingsText
+};
+
 
 const fieldsMock =  {
-    Template: {
-        content: {},
-        responsiveSettings: ['A'],
-        settings : Template
-    },
-    Title: TextMock,
-    Tagline: TextMock,
+    Template: TemplateMock,
+    Title: TitleMock,
+    Tagline: TaglineMock,
     Content : ContentMock
 };
 
-describe('BlockText', () => {
+
+const mockLanguage = 0;
+
+describe('component -  BlockText', () => {
+
     it('should render correctly', () => {
-        const component = shallow(<BlockText fields={fieldsMock} language={0}/>);
-
-        expect(component).toMatchSnapshot();
+        const {container} = render(<BlockText fields={fieldsMock} language={mockLanguage}/>);
+        expect(container.firstChild).toBeTruthy()
     });
-});
 
-describe('BlockText', () => {
     it('should render correctly title with order prop', () => {
-        const component = shallow(<BlockText order={['Title']} fields={fieldsMock} language={0}/>);
-
-        expect(component.find(Text)).toHaveLength(1);
+        const {container} = render(<BlockText order={['Title']} fields={fieldsMock} language={mockLanguage}/>);
+        const element = screen.getByText('Titre')
+        expect(element).toBeTruthy();
     });
-});
 
-describe('BlockText', () => {
     it('should render correctly Title and Tagline with order prop', () => {
-        const component = shallow(<BlockText order={['Title', 'Tagline']} fields={fieldsMock} language={0}/>);
-
-        expect(component.find(Text)).toHaveLength(2);
+        const {container} = render(<BlockText order={['Title', 'Tagline']} fields={fieldsMock} language={mockLanguage}/>);
+        expect(screen.getByText('Titre')).toBeTruthy();
+        expect(screen.getByText('Tagline')).toBeTruthy();
     });
-});
 
-describe('BlockText', () => {
     it('should render correctly Title,Tagline, Content  and respect order prop', () => {
-        const component = shallow(<BlockText order={['Title', 'Tagline', 'Content']} fields={fieldsMock} language={0}/>);
+        const {container} = render(<BlockText order={['Title', 'Tagline', 'Content']} fields={fieldsMock} language={mockLanguage}/>);
 
-        expect(component.find(Text)).toHaveLength(2);
-        expect(component.find(Content)).toHaveLength(1);
+        expect(screen.getByText('Titre')).toBeTruthy();
+        expect(screen.getByText('Tagline')).toBeTruthy();
+        expect(screen.getByText('Contenu')).toBeTruthy();
     });
-});
 
-describe('BlockText', () => {
     it('should render correctly order of children', () => {
-        const component = shallow(<BlockText order={['Title', 'Content', 'Tagline']} fields={fieldsMock} language={0}/>);
-        expect(component.childAt(0).is(Text)).toBeTruthy()
-        expect(component.childAt(1).is(Content)).toBeTruthy()
-        expect(component.childAt(2).is(Text)).toBeTruthy()
+        const {container} = render(<BlockText order={['Title', 'Content', 'Tagline']} fields={fieldsMock} language={mockLanguage}/>);
+        expect(container.firstChild.querySelector(':nth-child(1)').textContent).toEqual('Titre');
+        expect(container.firstChild.querySelector(':nth-child(2)').textContent).toEqual('Contenu');
+        expect(container.firstChild.querySelector(':nth-child(3)').textContent).toEqual('Tagline');
     });
-});
 
-describe('BlockText', () => {
     it('should render only element declare on props order', () => {
-        const component = shallow(<BlockText order={['Title']} fields={fieldsMock} language={0}/>);
-        expect(component.children()).toHaveLength(1);
+        const {container} = render(<BlockText order={['Title']} fields={fieldsMock} language={mockLanguage}/>);
+        expect(container.firstChild.children).toHaveLength(1);
+        expect(container.firstChild.querySelector(':nth-child(1)').textContent).toEqual('Titre');
     });
-});
 
-describe('BlockText', () => {
     it('should render all elements without  props order', () => {
-        const component = shallow(<BlockText fields={fieldsMock} language={0}/>);
-        expect(component.children()).toHaveLength(3);
+        const {container} = render(<BlockText fields={fieldsMock} language={mockLanguage}/>);
+        expect(container.firstChild.children).toHaveLength(3);
+        expect(screen.getByText('Titre')).toBeTruthy();
+        expect(screen.getByText('Tagline')).toBeTruthy();
+        expect(screen.getByText('Contenu')).toBeTruthy();
+
     });
+
 });

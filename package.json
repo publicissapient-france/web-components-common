@@ -4,10 +4,12 @@
   "description": "Web component common",
   "main": "dist/web-components-common.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose --detectOpenHandles",
     "build": "webpack --mode production",
     "storybook": "start-storybook -p 9001",
-    "linter-fix": "eslint --fix . --ext .js,.jsx src"
+    "linter-fix": "eslint --fix . --ext .js,.jsx src",
+    "test:watch": "jest --watchAll --verbose",
+    "test:coverage": "jest --verbose --coverage"
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,9 @@
     "@storybook/addon-notes": "5.3.21",
     "@storybook/addons": "6.1.18",
     "@storybook/react": "6.1.18",
+    "@testing-library/jest-dom": "5.11.9",
+    "@testing-library/react": "11.2.3",
+    "@testing-library/react-hooks": "5.0.3",
     "@tulipjs/eslint-config": "^1.1.1",
     "babel-eslint": "10.0.1",
     "babel-jest": "26.2.2",
@@ -39,9 +44,6 @@
     "babel-plugin-styled-components": "1.10.6",
     "babel-plugin-transform-class-properties": "6.24.1",
     "css-loader": "^1.0.0",
-    "enzyme": "3.11.0",
-    "enzyme-adapter-react-16": "1.15.2",
-    "enzyme-to-json": "3.5.0",
     "eslint": "5.16.0",
     "eslint-config-standard": "12.0.0",
     "eslint-plugin-import": "2.17.2",
@@ -61,19 +63,17 @@
     "@n8tb1t/use-scroll-position": "1.0.47",
     "core-js": "3.2.1",
     "lodash": "4.17.19",
-    "react": "16.8.4",
-    "react-dom": "16.8.4",
+    "react": "16.9.0",
+    "react-test-renderer": "^16.9.0",
+    "react-dom": "16.9.0",
     "react-slick": "0.27.1",
     "react-swipeable-views": "0.13.9",
     "styled-components": "4.3.2"
   },
   "peerDependencies": {},
   "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
     "setupFiles": [
-      "./src/setupTests.js"
+      "./src/test/setupTests.js"
     ]
   }
 }

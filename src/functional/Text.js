@@ -10,6 +10,8 @@ const Text = ({field, language}) => {
     return (<TextCommon {...getTextProps(field)}>{content}</TextCommon>);
 };
 
-Text.defaultProps = {}
-
+Text.propTypes = {
+    field : PropTypes.object,
+    language : PropTypes.number
+};
 export default Text;

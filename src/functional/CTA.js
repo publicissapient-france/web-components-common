@@ -21,14 +21,19 @@ const CTA = ({field, language, animateUnderline = false}) => {
                    onClick={(e) => {
                        if (field.settings.state.disabled) e.preventDefault();
                    }}
+                   data-testid="cta"
 
         >
-            {icon ? <i>{icon}</i> : null}
+            {icon ? <i data-testid="cta-icon">{icon}</i> : null}
             {content ? <p>{content}</p> : null}
         </CTACommon>
     );
 };
 
-CTA.defaultProps = {}
 
+CTA.propTypes = {
+    field: PropTypes.object,
+    language: PropTypes.number,
+    animateUnderline: PropTypes.bool
+};
 export default CTA;
