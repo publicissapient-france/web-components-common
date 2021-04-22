@@ -111,5 +111,12 @@ describe('component -  BlockText', () => {
         expect(screen.getByText('Contenu')).toBeTruthy();
 
     });
+    it('should return null child element if field name contained on  prop is invalid', () => {
+        const {container} = render(<BlockText fields={fieldsMock} order={["BBB"]}  language={mockLanguage}/>);
+        expect(container.firstChild.children).toHaveLength(0);
+
+
+
+    });
 
 });

@@ -4,7 +4,7 @@ import {
     generatePadding,
     generateBorder,
     generateBackgroundImage, generateBackgroundImageWebp,
-    generateSize, getFormatedColor,
+    generateSize, getFormatedColor,getFormatedPositionProperty,
     getFormatedSizeProperty, generateBorderColor, generateBackground
 } from "../../utils/StyleGenerator";
 
@@ -29,6 +29,15 @@ export const ImageCorner = styled.div.attrs(props => ({
                 ${getFormatedSizeProperty('max-height', props.basis[size].size[props.index])}
                 ${getFormatedSizeProperty('min-width', props.basis[size].size[props.index])}
                 ${getFormatedSizeProperty('min-height', props.basis[size].size[props.index])}
+                `
+                : ''
+            }
+            ${ props.basis[size].position &&  props.basis[size].position[props.index] ?
+                `
+                ${getFormatedPositionProperty('top', props.basis[size].position[props.index])}
+                ${getFormatedPositionProperty('right', props.basis[size].position[props.index])}
+                ${getFormatedPositionProperty('left', props.basis[size].position[props.index])}
+                ${getFormatedPositionProperty('bottom', props.basis[size].position[props.index])}
                 `
                 : ''
             }

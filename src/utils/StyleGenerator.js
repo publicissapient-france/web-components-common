@@ -420,6 +420,15 @@ const getFormatedSizeProperty = (property, value) => {
         : ''}
     `
 }
+const getFormatedPositionProperty = (property, value) => {
+    return `
+        ${value[property] && value[property] !== '' && value[property] !== '0'  ?
+        `${property} :${ isNumber(value[property])
+            ? `${ value[property] }px`
+            : value[property] } !important;`
+        : ''}
+    `
+}
 
 
 const toCamel = (s) => {
@@ -511,5 +520,5 @@ export {
     generateBorderColor,
     getFormatedSizeProperty,
     generateBackgroundImageWebp,
-    generateBackgroundImageWebpNoResponsive, generateBackgroundImageNoResponsive, toCamel
+    generateBackgroundImageWebpNoResponsive, generateBackgroundImageNoResponsive, toCamel, getFormatedPositionProperty
 }
