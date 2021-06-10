@@ -18,4 +18,5 @@ export { default as ListFormationsSmallCard } from './ListFormationsSmallCard';
 export { default as ListAllFormationsWithFilter } from './ListAllFormationsWithFilter';
 export { default as ListPartners } from './ListPartners';
 export { default as ListSpeakers } from './ListSpeakers';
+export { default as ListSpeakersCardFadeInEffect } from './ListSpeakersCardFadeInEffect';
 export { default as ListSpeakersFlipCard } from './ListSpeakersFlipCard';

@@ -1,0 +1,2 @@
+import ListSpeakersCardFadeInEffect from './ListSpeakersCardFadeInEffect';
+export default ListSpeakersCardFadeInEffect;
