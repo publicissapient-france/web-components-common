@@ -20,11 +20,10 @@ const ListSpeakersCardFadeInEffect = ({children, fields, name, assetsDirectory, 
                 responsive={FlexContainer ? FlexContainer.responsiveSettings : []}
                 flex={FlexContainer && FlexContainer.settings ? FlexContainer.settings.flex : {}}>
                 {data.map((speaker, i) => {
-                        return <LazyLoad key={`speaker-${i}`}
+                        return <LazyLoad key={i}
                                          placeholder={<Spinner TemplateCard={fields.TemplateCard}/>}
 
                         ><CardSpeakerFadeInEffect
-                            key={`speaker-${i}`}
                             configSpeakers={fields.Speakers}
                             configCard={fields.TemplateCard}
                             speaker={speaker}
