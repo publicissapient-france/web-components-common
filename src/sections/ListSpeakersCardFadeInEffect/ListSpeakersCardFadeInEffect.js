@@ -5,7 +5,7 @@ import {
 } from './styled';
 import {removeSpaces} from "../../utils/functions";
 import CardSpeakerFadeInEffect from './CardSpeakerFadeInEffect';
-//import LazyLoad from 'react-lazyload';
+import LazyLoad from 'react-lazyload';
 import {getTemplateProps, getTemplatePropsWithImage} from "../../utils/gettersProperties";
 
 const ListSpeakersCardFadeInEffect = ({children, fields, name, assetsDirectory, data}) => {
@@ -20,16 +20,16 @@ const ListSpeakersCardFadeInEffect = ({children, fields, name, assetsDirectory, 
                 responsive={FlexContainer ? FlexContainer.responsiveSettings : []}
                 flex={FlexContainer && FlexContainer.settings ? FlexContainer.settings.flex : {}}>
                 {data.map((speaker, i) => {
-                        return /*<LazyLoad key={`speaker-${i}`}
+                        return <LazyLoad key={`speaker-${i}`}
                                          placeholder={<Spinner TemplateCard={fields.TemplateCard}/>}
 
-                        >*/<CardSpeakerFadeInEffect
+                        ><CardSpeakerFadeInEffect
                             key={`speaker-${i}`}
                             configSpeakers={fields.Speakers}
                             configCard={fields.TemplateCard}
                             speaker={speaker}
                             fields={fields}
-                            assetsDirectory={assetsDirectory}/>/*</LazyLoad>*/
+                            assetsDirectory={assetsDirectory}/></LazyLoad>
                     })
                 }
                 {children}
