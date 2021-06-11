@@ -94,11 +94,11 @@ const CardSpeakerFadeInEffect = ({fields, assetsDirectory, language, speaker}) =
                         <TextCommon {...getTextProps(fields.TextNameActive)}>{`${speaker.firstName || ''}`}</TextCommon>  : null
                     }
                     {fields.TextJobActive && speaker.lastName  ?
-                        <ContentCommon {...getContentProps(fields.TextJobActive)}>{`${speaker.lastName || ''}`}</ContentCommon>
+                        <TextCommon {...getTextProps(fields.TextJobActive)}>{`${speaker.lastName || ''}`}</TextCommon>
                         : null
                         }
                         {fields.ContentInfo && speaker.bio  ?
-                        <ContentCommon {...getContentProps(fields.ContentInfo)}>{`${speaker.bio || ''}`}</ContentCommon>
+                        <TextCommon {...getTextProps(fields.ContentInfo)}>{`${speaker.bio || ''}`}</TextCommon>
                         : null
                         }
                 </ContainerActive>
