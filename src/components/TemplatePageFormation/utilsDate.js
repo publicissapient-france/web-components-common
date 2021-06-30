@@ -38,6 +38,9 @@ export const getFormatedDays = (startTime, endTime) => {
         }
         return `${ formatComplete(startDay) } - ${ formatComplete(endDay) } `;
     } else {
+        if (typeof startTime === 'undefined') startTime = [];
+        if (typeof endTime === 'undefined') endTime = [];
+
         const allDate = formatDateString([...startTime, ...endTime]);
         const separator = !startTime.length || !endTime.length ? '' : ' et ';
 

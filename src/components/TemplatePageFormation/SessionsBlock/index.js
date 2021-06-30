@@ -19,7 +19,6 @@ class SessionsBlock extends Component {
     render() {
         const { sessions, settingsSession, settingsPromo} = this.props;
 
-
         if(!sessions) return null;
         return (
             <Container>

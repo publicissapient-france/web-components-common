@@ -13,12 +13,15 @@ class ItemSession extends Component {
         if (session.promo.available) {
             return (
                 <ContainerPromo {...getTemplateProps(settingsPromo.Template)} >
+
                     <Contain>
                         <TextCommon {...getTextProps(settingsPromo.Title)} >
                             {getFormatedDays(session.startTime, session.endTime)}
                         </TextCommon>
                         <TextCommon {...getTextProps(settingsPromo.Tagline)} >{`${ session.promo.price } au lieu ${ price }`}</TextCommon>
                     </Contain>
+
+
                     {
                         session.type !== 'a_distance' ? null :
                             <IconContainer
