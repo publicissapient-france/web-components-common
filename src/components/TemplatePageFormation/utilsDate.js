@@ -14,22 +14,16 @@ export const formatDateString = days => {
         const current = new Date(day);
         if (notLastIndex(i, days)) {
             const next = new Date(days[i + 1]);
-            if (hasSameMonth(current, next)) { return `${ formatOnlyDay(current) }`; }
+            if (hasSameMonth(current, next)) {
+                return `${ formatOnlyDay(current) }`;
+            }
         }
         return `${ formatComplete(current) }`;
     });
 };
 
 export const getFormatedDays = (startTime, endTime) => {
-    /*const startDay = new Date(startTime);
-    const endDay = new Date(endTime);
-
-    if (startDay.getMonth() === endDay.getMonth()) {
-        return `${startDay.toLocaleDateString('fr-FR', optionsOnlyDay)} - ${endDay.toLocaleDateString('fr-FR', optionsComplete)} `
-    } else {
-        return `${startDay.toLocaleDateString('fr-FR', optionsComplete)} - ${endDay.toLocaleDateString('fr-FR', optionsComplete)} `
-    }*/
-    if (typeof startTime === 'string' && typeof endTime === 'string') {
+   if (typeof startTime === 'string' && typeof endTime === 'string') {
         const startDay = new Date(startTime);
         const endDay = new Date(endTime);
 
@@ -50,12 +44,11 @@ export const getFormatedDays = (startTime, endTime) => {
         if (hasMultipleDays(startTime) && !hasSameMonth(lastDateOfStartTime, beforeLastDateOfStartTime)) {
             const start = formatDateString(startTime).join(' - ');
             const end = formatDateString(endTime).join(' - ');
-
             return `${ start }${ separator }${ end }`;
         } else if (hasMultipleDays(startTime) || hasMultipleDays(endTime)) {
             const indexInsertSeparator = startTime.length;
             const start = allDate.slice(0, indexInsertSeparator).join(' - ');
-            const end = allDate.slice(indexInsertSeparator + 1).join(' - ');
+            const end = allDate.slice(indexInsertSeparator).join(' - ');
 
             return `${ start }${ separator }${ end }`;
         }
