@@ -91,9 +91,9 @@ class Slots extends Component {
                                   basisTitle={getTitleSettingsByType(slot.type, fieldSettings.settings)}
                                   typographyText={getTextSettingsByType(slot.type, fieldSettings.settings)}
                                   basisText={getTextSettingsByType(slot.type, fieldSettings.settings)}>
-                        <h4 className={getDuration(slot.fromTime, slot.toTime) <= 30 ? 'cropped' : ''}>{slot.title}</h4>
+                        <h4 className={getDuration(slot.fromTime, slot.toTime) <= 4 ? 'cropped' : ''}>{slot.title}</h4>
                         {
-                            slot.speakers && slot.speakers.length !== 0 && getDuration(slot.fromTime, slot.toTime) >= 30 ?
+                            slot.speakers && slot.speakers.length !== 0 && getDuration(slot.fromTime, slot.toTime) >= 4 ?
                                 <h5>{slot.speakers.map((speaker) => speaker.name).join(', ')}</h5>
                                 : null
                         }

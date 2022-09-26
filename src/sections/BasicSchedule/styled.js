@@ -15,7 +15,7 @@ import {device, size, theme} from "../../styles/constants";
 
 let grey50 = '#A2A2A2';
 export let red = '#FE414D';
-let baseHeight = 180;
+let baseHeight = 100;
 
 export const Wrapper = styled.section.attrs(props => ({
     responsive: props.responsive,
